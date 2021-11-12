@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin);
   color: white;
 }
 * {
@@ -18,18 +18,19 @@
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(120deg, #e1f861 0%, #6af058 100%);
+  background-image: linear-gradient(120deg, #30bac7 10%, #0c8b08 100%);
   color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
 header {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 200;
 }
 
 header,
 form {
-  min-height: 20vh;
+  min-height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,14 +43,29 @@ form button {
   background: white;
 }
 form button {
-  color: #ff6f47;
+  color: #2237f8;
   background: #f7fffe;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 form button:hover {
-  background: #ff6f47;
+  background: #2237f8;
   color: white;
+}
+.category-input{
+margin: .5rem;
+padding: .9rem;
+  font-size: 1rem;
+}
+.category-input::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .1rem;
+  background: #2237f8;
+  cursor: pointer;
+  pointer-events: none;
 }
 .todo-container {
   display: flex;
@@ -63,25 +79,27 @@ form button:hover {
 }
 
 .todo {
-  margin: 0.5rem;
-  background: white;
-  font-size: 1.5rem;
-  color: black;
+  margin: 1rem;
+  background: rgb(216, 214, 214);
+  font-size: 1rem;
+  color: #06138a;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
 }
-.filter-todo {
+
+.filter-todo, .filter-category {
   padding: 1rem;
 }
+
 .todo li {
   flex: 1;
 }
 
 .trash-btn,
 .complete-btn {
-  background: #f36506;
+  background: #f31a06;
   color: white;
   border: none;
   padding: 1rem;
@@ -89,12 +107,17 @@ form button:hover {
   font-size: 1rem;
 }
 .complete-btn {
-  background: rgb(11, 212, 162);
+  background: rgb(4, 134, 37);
 }
 .todo-item {
   padding: 0rem 0.5rem;
 }
-
+.list-header{
+  color:rgb(15, 15, 15);
+}
+.entry-header{
+  color:rgb(15, 15, 15);
+}
 .fa-trash,
 .fa-check {
   pointer-events: none;
@@ -123,25 +146,37 @@ select {
 }
 
 /* Custom Select */
-.select {
+.select, .select2 {
   margin: 1rem;
   position: relative;
   overflow: hidden;
 }
-select {
-  color: #ff6f47;
+
+select, select2{
+  color: #2237f8;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   width: 12rem;
 }
+
 /* Arrow */
 .select::after {
   content: "\25BC";
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1rem;
-  background: #ff6f47;
+  padding: .1rem;
+  background: #2237f8;
+  cursor: pointer;
+  pointer-events: none;
+}
+.select2::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .1rem;
+  background: #2237f8;
   cursor: pointer;
   pointer-events: none;
 }

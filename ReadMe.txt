@@ -59,7 +59,7 @@ TO DELETE A LIST ELEMENT.
             setTodos(todos.filter((el)=>el.id !==todo.id));
         }
     
-    TO PASS STATE TO MODIFY STYLING
+TO PASS STATE TO MODIFY STYLING
     1. in the html list item, modify the syntax ...
      - <li className={`todo-item ${todo.completed ? "completed" : ""}`}> {text} </li>
      - this indicates that it is javascript, and the styling varies on the boolean value
@@ -70,7 +70,7 @@ TO DELETE A LIST ELEMENT.
             opacity: 0.5;
         }
 
-    ADDING USEEFFECT
+ADDING USEEFFECT
         1. in App.js
             a. add import ... import React, {useState, useEffect} from 'react';
             b. add useEffect to function after the consts
@@ -87,7 +87,7 @@ TO DELETE A LIST ELEMENT.
                 {filteredTodos.map((todo)=>(
                 <ToDo ...
 
-    ADDING LOCAL STORAGE (PERSISTENCE)
+ADDING LOCAL STORAGE (PERSISTENCE)
     1. in App.js in function, 
         a. before return, add the function
               const saveLocalTodos = () =>{

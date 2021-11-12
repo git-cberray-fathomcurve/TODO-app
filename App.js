@@ -8,9 +8,11 @@ function App() {
 
   //STATE
   const[inputText, setInputText] = useState("");
+  const[inputCategory, setInputCategory] = useState("");
   const[todos, setTodos] = useState([]);
   const[status, setStatus] = useState('All');
   const[filteredTodos, setFilteredTodos]=useState([])
+  const[category, setCategory] = useState('All');
 
 //RUN ONCE
 useEffect(()=>{
@@ -21,6 +23,10 @@ useEffect(()=>{
 useEffect(()=>{
   filterHandler();
 },[todos, status]);
+
+useEffect(()=>{
+  categoryHandler();
+},[todos, category]);
 
 useEffect(()=>{
   saveLocalTodos();
@@ -40,6 +46,29 @@ useEffect(()=>{
       break;
     }
   };
+  const categoryHandler = () =>{
+    switch(category){
+      case 'all':
+        setFilteredTodos(todos);
+        break;
+      case 'work1':
+        setFilteredTodos(todos.filter((todo)=>todo.category==='work1'));
+        break;
+      case 'work2':
+        setFilteredTodos(todos.filter((todo)=>todo.category==='work2'));
+        break;
+      case 'personal':
+        setFilteredTodos(todos.filter((todo)=>todo.category==='personal'));
+        break;
+      case 'other':
+        setFilteredTodos(todos.filter((todo)=>todo.category==='other'));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  };
+
    //SAVE TO LOCAL
    const saveLocalTodos = () =>{
      localStorage.setItem('todos',JSON.stringify(todos))
@@ -55,18 +84,30 @@ useEffect(()=>{
   return (
     <div className="App">
       <header>
-        <h1>
-          Chuck's To-Do List
-          </h1>
-          </header>
-          <Form 
-          todos = {todos} 
-          setTodos = {setTodos} 
-          inputText = {inputText} 
-          setInputText={setInputText}
-          setStatus={setStatus}        
-          />
-          <ToDoList todos = {todos} setTodos = {setTodos}  filteredTodos={filteredTodos} />
+        <h1>Chuck's To-Do List</h1>
+      </header>
+
+  <h2 className="entry-header">TO DO ENTRY</h2>  
+
+        <Form 
+            todos = {todos} 
+            setTodos = {setTodos} 
+            inputText = {inputText} 
+            setInputText={setInputText}
+            inputCategory = {inputCategory} 
+            setInputCategory={setInputCategory}
+            setStatus={setStatus}        
+            setCategory = {setCategory}
+            category = {category}
+            />
+        <h2 className="list-header">TO DO LIST</h2>
+        <ToDoList 
+            todos = {todos} 
+            setTodos = {setTodos}  
+            filteredTodos={filteredTodos}  
+            setCategory = {setCategory}
+            category = {category}
+             />
     </div>
   );
 }
